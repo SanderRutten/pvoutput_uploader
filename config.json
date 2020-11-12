@@ -1,0 +1,31 @@
+{
+  "name": "PVOutput Uploader",
+  "version": "0.1",
+  "slug": "pvoutput_uploader",
+  "description": "Upload local data to pvoutput",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "url": "https://github.com/nakebod/",
+  "startup": "application",
+  "boot": "auto",
+  "homeassistant_api": true,
+  "options": {
+    "pvoutput_apikey": "API",
+    "pvoutput_systemid": "SystemID",
+    "ha_host": "Home Assistant IP/Hostname",
+    "ha_token": "Home Assistant Token",
+    "entity_v1": "sensor.pvoutput_v1",
+    "entity_v2": "sensor.used.for.power.generation",
+    "entity_v3": "sensor.pvoutput_v3",
+    "entity_v4": "sensor.power_total_usage"
+  },
+  "schema": {
+    "pvoutput_apikey": "str",
+    "pvoutput_systemid": "str",
+    "ha_host": "str",
+    "ha_token": "str",
+    "entity_v1": "str",
+    "entity_v2": "str",
+    "entity_v3": "str",
+    "entity_v4": "str"
+  }
+}
