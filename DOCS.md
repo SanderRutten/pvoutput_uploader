@@ -12,17 +12,27 @@ Go to Supervisor > Add-On Store and reload your add-ons. This add-on is now show
 |pvoutput_systemid   | Your plant ID  |
 |v1_entity   | Entity which reports the Energy Generated (Today's generated solar power in watt hours)  |
 |v2_entity   | Entity which reports the Power Generated (Current generated solar power in watts)  |
-|v3_entity   | Entity which reports the Energy Consumption (Today's (total) usage in watt hours)  |
-|v4_entity   | Entity which reports the Power Consumption (Current power usage in watts)  |
+|v3_entity   | (Optional) Entity which reports the Energy Consumption (Today's (total) usage in watt hours)  |
+|v4_entity   | (Optional) Entity which reports the Power Consumption (Current power usage in watts)  |
+|v5_entity   | (Optional) Entity which reports the temperature  |
+|v6_entity   | (Optional) Entity which reports voltage  |
   
 For v4 you can upload your smartmeter energy data, or use a sensor template which calculates the total energy usage for that day.  
 To calculate the total energy per day you can take a look to the example below.  
 Please make sure that your output is in the format expected by [PVOutput](https://pvoutput.org/help.html#api-addstatus).  
   
-## No smartmeter?
-If you don't have a device for your (smart) power meter, you can 'disable' it by editing this add-on and rebuilding it.  
-In config.sh remove the 4 lines with entity_v3 and entity_v4.  
-In pvoutput_uploader.py remove everything which points to v3 and v4 (e.g. api_v3, entity_v3, and don't forget to remove the two values in the cURL command).  
+## Config YAML needs ' (Apostrophe)
+For some reason I haven't figured out yet..  
+If you configure this add-on, please add apostrophe's around the entity_vx values before saving.  
+For example:
+```yml
+entity_v1 = 'sensor.pvoutput_v1'
+```
+After saving the apostrophes are gone again, but without this the add-on will stop running directly after starting.
+
+## No smartmeter, temperature or voltage?
+Keep/set the entity (v3, v4, v5 and v6) configuartion to sensor.none for each device you don't have.  
+v1 and v2 are required (That's the main purpose of this add-on), all other sensors are optional.
 
 ## Example sensor configuration
 The configuration below works in my situation. Adjust to fit your situation  
@@ -77,3 +87,11 @@ Once again it was necessary to get the values in watt hour.
         friendly_name: 'Real usage'
         unit_of_measurement: 'Watt'
 ```
+
+# Changelog
+## 0.1
+Initial release of this add-on.
+
+## 0.2
+- Added v5 and v6 options.  
+- v3, v4, v5 and v6 are not optional and can easily be disabled instead of editing the scripts.
