@@ -8,5 +8,7 @@ entity_v1=$(jq --raw-output ".entity_v1" $CONFIG_PATH)
 entity_v2=$(jq --raw-output ".entity_v2" $CONFIG_PATH)
 entity_v3=$(jq --raw-output ".entity_v3" $CONFIG_PATH)
 entity_v4=$(jq --raw-output ".entity_v4" $CONFIG_PATH)
+entity_v5=$(jq --raw-output ".entity_v5" $CONFIG_PATH)
+entity_v6=$(jq --raw-output ".entity_v6" $CONFIG_PATH)
 
-python3 ./pvoutput_uploader.py $pvoutput_apikey $pvoutput_systemid $ha_host $ha_token $entity_v1 $entity_v2 $entity_v3 $entity_v4
+python3 ./pvoutput_uploader.py $pvoutput_apikey $pvoutput_systemid $ha_host $ha_token $entity_v1 $entity_v2 $entity_v3 $entity_v4 $entity_v5 $entity_v6
